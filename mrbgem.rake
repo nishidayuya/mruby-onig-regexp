@@ -54,11 +54,7 @@ MRuby::Gem::Specification.new('mruby-onig-regexp') do |spec|
 
     file oniguruma_lib => header do |t|
       Dir.chdir(oniguruma_dir) do
-        e = {
-          'CC' => "#{build.cc.command} #{build.cc.flags.join(' ')}",
-          'CXX' => "#{build.cxx.command} #{build.cxx.flags.join(' ')}",
-          'LD' => "#{build.linker.command} #{build.linker.flags.join(' ')}",
-          'AR' => build.archiver.command }
+        e = {}
         unless ENV['OS'] == 'Windows_NT'
           if build.kind_of? MRuby::CrossBuild
             host = "--host #{build.name}"
